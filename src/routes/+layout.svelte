@@ -1,19 +1,56 @@
-<script>
-    import "./layout.css";
-    let { children } = $props();
+<script lang="ts">
+  import type { Snippet } from 'svelte';
+
+  let { children }: { children: Snippet } = $props();
 </script>
 
-<div class="min-h-screen bg-slate-50 text-slate-900 font-sans">
-    <nav class="border-b bg-white p-4">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold tracking-tight text-indigo-600">
-                AlgebraStep <span class="text-slate-400 font-light">| Lab</span>
-            </h1>
-            <div class="text-sm text-slate-500">Practice Mode</div>
-        </div>
-    </nav>
+<svelte:head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Code+Pro:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
 
-    <main class="max-w-4xl mx-auto p-6">
-        {@render children()}
-    </main>
+<div class="app">
+  {@render children()}
 </div>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :global(:root) {
+    --bg: #1a1f2e;
+    --bg-surface: #222840;
+    --bg-raised: #2a3252;
+    --chalk: #e8e4d9;
+    --chalk-dim: #9a95899e;
+    --accent-gold: #f0c060;
+    --accent-teal: #5ec4b0;
+    --accent-red: #e05a5a;
+    --accent-green: #5ec47a;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Lora', serif;
+    --font-mono: 'Source Code Pro', monospace;
+    --radius: 6px;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  :global(body) {
+    background-color: var(--bg);
+    color: var(--chalk);
+    font-family: var(--font-body);
+    min-height: 100vh;
+  }
+
+  .app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+</style>
